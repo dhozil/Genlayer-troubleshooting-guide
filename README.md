@@ -22,7 +22,6 @@ Root causes and fixes:
 The most common cause. Asimov and Bradbury use different SDK hashes.
 # ❌ Wrong — Asimov hash
 # { "Depends": "py-genlayer:test" }
-# { "Depends": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6" }
 
 # ✅ Correct — Bradbury hash
 # { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
