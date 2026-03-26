@@ -1,4 +1,4 @@
-#🔧 GenLayer Testnet Bradbury — Developer Troubleshooting Guide
+# 🔧 GenLayer Testnet Bradbury — Developer Troubleshooting Guide
 
 *A practical guide based on real errors encountered while building Intelligent Contracts on Testnet Bradbury.*
 
