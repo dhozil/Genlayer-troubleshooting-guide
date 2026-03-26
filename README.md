@@ -124,7 +124,7 @@ class MyContract(gl.Contract):
         self.state = str(result).strip()
 
     @gl.public.view
-[26/03/2026 09:42] DhoziL: def get_state(self) -> str:
+    def get_state(self) -> str:
         return self.state
 
 ---
