@@ -21,10 +21,10 @@ Root causes and fixes:
 ## ❌ Wrong Depends hash
 The most common cause. Asimov and Bradbury use different SDK hashes.
 ## ❌ Wrong — Asimov hash
-# { "Depends": "py-genlayer:test" }
+### { "Depends": "py-genlayer:test" }
 
 # ✅ Correct — Bradbury hash
-# { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
+## { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
 
 ## ❌ Unsupported return type dict
 GenLayer schema parser does not support dict as a return type or state variable.
