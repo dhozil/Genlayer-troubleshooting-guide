@@ -18,17 +18,17 @@ When it happens: Before deployment, when Studio tries to parse your contract.
 
 Root causes and fixes:
 
-### ❌ Wrong Depends hash
+## ❌ Wrong Depends hash
 The most common cause. Asimov and Bradbury use different SDK hashes.
-# ❌ Wrong — Asimov hash
+## ❌ Wrong — Asimov hash
 # { "Depends": "py-genlayer:test" }
 
 # ✅ Correct — Bradbury hash
 # { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
 
-### ❌ Unsupported return type dict
+## ❌ Unsupported return type dict
 GenLayer schema parser does not support dict as a return type or state variable.
-# ❌ Wrong
+## ❌ Wrong
 @gl.public.view
 def get_result(self) -> dict:
     return {"status": self.status}
@@ -38,8 +38,8 @@ def get_result(self) -> dict:
 def get_status(self) -> str:
     return self.status
 
-### ❌ Unsupported state variable type Address
-# ❌ Wrong
+## ❌ Unsupported state variable type Address
+## ❌ Wrong
 owner: Address
 
 def __init__(self):
@@ -61,8 +61,8 @@ def is_verified(self) -> str:
 
 These errors happen at runtime after successful deployment.
 
-### ❌ module 'genlayer.gl' has no attribute 'dataclass'
-# ❌ Wrong — gl.dataclass does not exist
+## ❌ module 'genlayer.gl' has no attribute 'dataclass'
+## ❌ Wrong — gl.dataclass does not exist
 @gl.dataclass
 class MyData:
     name: str
@@ -72,22 +72,22 @@ class MyContract(gl.Contract):
     name: str
     status: str
 
-### ❌ module 'genlayer.std' has no attribute 'eq_principle'
-# ❌ Wrong — missing 's' at the end
+## ❌ module 'genlayer.std' has no attribute 'eq_principle'
+## ❌ Wrong — missing 's' at the end
 result = gl.eq_principle.prompt_non_comparative(...)
 
 # ✅ Correct — note the 's' at the end
 result = gl.eq_principles.eq_principle_prompt_non_comparative(...)
 
-### ❌ module 'genlayer.std.eq_principles' has no attribute 'prompt_non_comparative'
-# ❌ Wrong — method name changed in Bradbury
+## ❌ module 'genlayer.std.eq_principles' has no attribute 'prompt_non_comparative'
+## ❌ Wrong — method name changed in Bradbury
 result = gl.eq_principles.prompt_non_comparative(...)
 
 # ✅ Correct — full method name required
 result = gl.eq_principles.eq_principle_prompt_non_comparative(...)
 
-### ❌ module 'genlayer.std' has no attribute 'nondet'
-# ❌ Wrong — nondet module doesn't exist in this SDK version
+## ❌ module 'genlayer.std' has no attribute 'nondet'
+## ❌ Wrong — nondet module doesn't exist in this SDK version
 page = gl.nondet.web.render(url, mode="text")
 result = gl.nondet.exec_prompt(prompt)
 
@@ -99,6 +99,7 @@ page = gl.get_webpage(url, mode="text")
 ## 3. Correct Contract Template for Bradbury
 
 Use this as your starting point for every new contract:
+
 ```
 # v0.1.0
 # { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
@@ -127,13 +128,13 @@ class MyContract(gl.Contract):
     @gl.public.view
     def get_state(self) -> str:
         return self.state
-
----
+```
 
 ## 4. Correct eq_principles Usage
 
 The eq_principles module is the core of GenLayer's AI consensus. Here's the correct pattern:
 def my_write_method(self, query: str) -> None:
+
     # Step 1: Define non-deterministic function
     def non_det():
         # Fetch external data here
@@ -156,7 +157,6 @@ Rules:
   - Instead concatenate: "Check if " + variable + " is valid"
 - Always call str(result).strip() on the output
 
----
 
 ## 5. Validator Disagreement Errors
 
@@ -183,7 +183,6 @@ criteria="Answer must be exactly: true or false"
 # Better than:
 criteria="Answer should indicate yes or no"
 
----
 
 ## 6. Web Fetch Issues
 
@@ -202,7 +201,6 @@ gl.get_webpage("https://wttr.in/Jakarta?format=j1", mode="text")
 - Keep URLs short and direct
 - Avoid URLs that require authentication or cookies
 
----
 
 ## 7. Quick Reference: Bradbury vs Asimov
 
@@ -216,7 +214,6 @@ gl.get_webpage("https://wttr.in/Jakarta?format=j1", mode="text")
 | State dict | Supported | ❌ Not supported |
 | Return dict | Supported | ❌ Not supported |
 
----
 
 ## 8. Minimal Working Example
 
