@@ -99,6 +99,7 @@ page = gl.get_webpage(url, mode="text")
 ## 3. Correct Contract Template for Bradbury
 
 Use this as your starting point for every new contract:
+```
 # v0.1.0
 # { "Depends": "py-genlayer:15qfivjvy80800rh998pcxmd2m8va1wq2qzqhz850n8ggcr4i9q0" }
 from genlayer import *
